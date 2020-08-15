@@ -1,4 +1,6 @@
 import { delay } from './helpers';
+import infoIcon from './icons/info.svg';
+import closeIcon from './icons/close.svg';
 
 const NOTIFICATION_TYPE_CONFIG = {
     info: {
@@ -43,16 +45,35 @@ export class NotificationsManager {
     createNotification(text, autoHide, config = {}) {
         this.notificationsCount++;
         const notificationElement = document.createElement('div');
-        notificationElement.innerText = text;
         notificationElement.classList.add('notification-item')
-        notificationElement.addEventListener('click', () => {
-            this.removeNotification(notificationElement);
-        });
-
         if (config.className) {
             notificationElement.classList.add(config.className);
         }
-        
+
+        const iconContainer = document.createElement('div');
+        iconContainer.classList.add('notification-item__icon-container');
+        iconContainer.innerHTML = infoIcon;
+
+        const contentContainer = document.createElement('div');
+        contentContainer.classList.add('notification-item__content-container');
+        contentContainer.innerText = text;
+
+        const closeIconContainer = document.createElement('div');
+        closeIconContainer.classList.add('notification-item__close-icon-container');
+
+        const closeIconElement = document.createElement('div');
+        closeIconElement.classList.add('notification-item__close-icon');
+        closeIconElement.innerHTML = closeIcon;
+        closeIconElement.addEventListener('click', () => {
+            this.removeNotification(notificationElement);
+        });
+
+        closeIconContainer.appendChild(closeIconElement);
+
+        notificationElement.appendChild(iconContainer);
+        notificationElement.appendChild(contentContainer);
+        notificationElement.appendChild(closeIconContainer);
+
         const autoHideValue = autoHide !== undefined
             ? autoHide
             : config.autoHide;
@@ -81,7 +102,8 @@ export class NotificationsManager {
             document.body.appendChild(this.container);
         }
 
-        this.container.appendChild(notificationElement);
+        this.container.prepend(notificationElement);
+        notificationElement.classList.add('notification-item_status_active');
     }
 
     showNotification(text, autoHide, config) {

@@ -11,14 +11,14 @@ let counter = 0;
 const notificationManager = new NotificationsManager();
 
 controls.addInfoNotification.addEventListener('click', () => {
-    notificationManager.showInfoNotification(`Some information text ${++counter}`);
+    notificationManager.showInfoNotification(`Some information text ${++counter}`, false);
 });
 controls.addSuccessNotification.addEventListener('click', () => {
-    notificationManager.showSuccessNotification(`Some success text ${++counter}`);
+    notificationManager.showSuccessNotification(`Some success text ${++counter}`, false);
 });
 controls.addWarningNotification.addEventListener('click', () => {
-    notificationManager.showWarningNotification(`Some warning text ${++counter}`);
+    notificationManager.showWarningNotification(`Some warning text ${++counter}`, false);
 });
 controls.addErrorNotification.addEventListener('click', () => {
-    notificationManager.showErrorNotification(`Some error text ${++counter}`);
+    notificationManager.showErrorNotification(`Some error text ${++counter}`, false);
 });

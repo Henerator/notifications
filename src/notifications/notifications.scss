@@ -1,3 +1,14 @@
+@keyframes show-in {
+    from {
+        opacity: 0;
+        transform: translateY(-70px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .notifications-container {
     z-index: 9999;
     position: fixed;
@@ -7,26 +18,84 @@
 }
 
 .notification-item {
-    width: 300px;
-    height: 60px;
+    display: flex;
+    width: 400px;
+    min-height: 60px;
     margin-bottom: 12px;
-    color: #fff;
-    background: #777;
-    
+    color: #222;
+    background-color: #fff;
+    border: 1px solid #fff;
+    animation: 0.5s ease show-in;
+
     &:last-child {
         margin-bottom: 0;
     }
 }
 
+.notification-item_status_active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification-item__icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 64px;
+}
+
+.notification-item__content-container {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    padding: 12px;
+}
+
+.notification-item__close-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+}
+
+.notification-item__close-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box;
+    width: 18px;
+    height: 18px;
+    padding: 3px;
+    cursor: pointer;
+}
+
 .notification-item_type_info {
-    background-color: #00A7E1;
+    border-color: #00A7E1;
+
+    .notification-item__icon-container {
+        background-color: #00A7E1;
+    }
 }
 .notification-item_type_success {
-    background-color: #2A9134;
+    border-color: #2A9134;
+
+    .notification-item__icon-container {
+        background-color: #2A9134;
+    }
 }
 .notification-item_type_warning {
-    background-color: #FF9B42;
+    border-color: #FF9B42;
+
+    .notification-item__icon-container {
+        background-color: #FF9B42;
+    }
 }
 .notification-item_type_error {
-    background-color: #D80B00;
+    border-color: #D80B00;
+
+    .notification-item__icon-container {
+        background-color: #D80B00;
+    }
 }
