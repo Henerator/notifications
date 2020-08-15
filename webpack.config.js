@@ -20,11 +20,18 @@ module.exports = {
         filename: '[name]-[hash].js',
         path: path.resolve(__dirname, 'dist'),
     },
-    resolve: {
-        extensions: ['.js'],
-    },
     module: {
         rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }
+            },
             {
                 test: /\.scss$/,
                 use: [
@@ -54,6 +61,7 @@ module.exports = {
             template: 'src/index.html',
         })
     ],
+    devtool: 'eval-source-map',
     devServer: {
         contentBase: 'dist',
         compress: true,

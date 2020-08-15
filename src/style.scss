@@ -9,4 +9,53 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 18px;
+}
+
+.button {
+    padding: 20px;
+    border-radius: 3px;
+    border: none;
+    outline: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.button_info {
+    background-color: #00A7E1;
+}
+.button_success {
+    background-color: #2A9134;
+}
+.button_warning {
+    background-color: #FF9B42;
+}
+.button_error {
+    background-color: #D80B00;
+}
+
+.button_responsive {
+    width: 100%;
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.control-item {
+    margin-bottom: 12px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 }
