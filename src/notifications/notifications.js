@@ -1,13 +1,16 @@
 import { delay } from './helpers';
 import infoIcon from './icons/info.svg';
+import successIcon from './icons/success.svg';
 import closeIcon from './icons/close.svg';
 
 const NOTIFICATION_TYPE_CONFIG = {
     info: {
-        className: 'notification-item_type_info',
+        icon: infoIcon,
         autoHide: true,
+        className: 'notification-item_type_info',
     },
     success: {
+        icon: successIcon,
         className: 'notification-item_type_success',
         autoHide: true,
     },
@@ -52,7 +55,7 @@ export class NotificationsManager {
 
         const iconContainer = document.createElement('div');
         iconContainer.classList.add('notification-item__icon-container');
-        iconContainer.innerHTML = infoIcon;
+        iconContainer.innerHTML = config.icon;
 
         const contentContainer = document.createElement('div');
         contentContainer.classList.add('notification-item__content-container');
