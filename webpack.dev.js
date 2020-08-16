@@ -1,10 +1,11 @@
 const path = require('path');
+const common = require('./webpack.common.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin').CleanWebpackPlugin;
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { merge } = require('webpack-merge');
 
-module.exports = {
+module.exports = merge(common, {
     mode: 'development',
     entry: {
         notifications: [
@@ -23,16 +24,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
-                }
-            },
-            {
                 test: /\.scss$/,
                 use: [
                     process.env.NODE_ENV === 'production'
@@ -42,19 +33,9 @@ module.exports = {
                     'sass-loader'
                 ]
             },
-            {
-                test: /\.svg$/,
-                use: {
-                    loader: 'svg-inline-loader',
-                    options: {
-                        removeSVGTagAttrs: false
-                    }
-                }
-            }
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new CopyWebpackPlugin({
             patterns: [
                 {
@@ -77,4 +58,4 @@ module.exports = {
         port: 3000,
         open: true
     },
-};
+});

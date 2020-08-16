@@ -1,11 +1,17 @@
 {
-  "name": "notifications-manager",
+  "name": "js-simple-notifications",
   "version": "0.0.1",
   "description": "Simple JS notifications",
-  "main": "dist/index.html",
+  "main": "dist/notifications.js",
+  "files":  ["dist/**/*"],
   "scripts": {
-    "start": "webpack-dev-server --mode=development",
-    "build": "webpack"
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.dev.js",
+    "build:prod": "webpack --config webpack.prod.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com:Henerator/notifications.git"
   },
   "author": "roman makarov",
   "license": "ISC",
@@ -25,6 +31,7 @@
     "svg-inline-loader": "^0.8.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.1"
   }
 }
